@@ -1,0 +1,14 @@
+Table Name is bike_data
+The Table has 4780363 number of rows 
+Table Name is central_park_weather
+The Table has 2984 number of rows 
+Table Name is fhv_bases
+The Table has 1097 number of rows 
+Table Name is fhv_tripdata
+The Table has 3008649 number of rows 
+Table Name is fhvhv_tripdata
+The Table has 32182272 number of rows 
+Table Name is green_tripdata
+The Table has 238718 number of rows 
+Table Name is yellow_tripdata
+The Table has 5454972 number of rows 
