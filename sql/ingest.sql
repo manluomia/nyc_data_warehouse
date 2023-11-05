@@ -10,21 +10,21 @@
 DROP TABLE IF EXISTS bike_data;
 
 -- Create the bike_data table and ingest data from citibike-tripdata.csv.gz
-CREATE TABLE bike_data AS SELECT * FROM read_csv_auto('data/citibike-tripdata.csv.gz', filename = True);
+CREATE TABLE bike_data AS SELECT * FROM read_csv_auto('data/citibike-tripdata.csv.gz', all_varchar = True, filename = True);
 
 -- Ingesting Central Park Weather Data
 -- If table central_park_weather exists, drop it
 DROP TABLE IF EXISTS central_park_weather;
 
 -- Create the central_park_weather table and ingest data from central_park_weather.csv
-CREATE TABLE central_park_weather AS SELECT * FROM read_csv_auto('data/central_park_weather.csv', filename = True);
+CREATE TABLE central_park_weather AS SELECT * FROM read_csv_auto('data/central_park_weather.csv', all_varchar = True , filename = True);
 
 -- Ingesting FHV Bases Data
 -- If table fhv_bases exists, drop it
 DROP TABLE IF EXISTS fhv_bases;
 
 -- Create the fhv_bases table and ingest data from fhv_bases.csv
-CREATE TABLE fhv_bases AS SELECT * FROM read_csv_auto('data/fhv_bases.csv', filename = True, header = True);
+CREATE TABLE fhv_bases AS SELECT * FROM read_csv_auto('data/fhv_bases.csv', filename = True, all_varchar = True, header = True);
 
 -- Ingesting FHV Trip Data
 -- If table fhv_tripdata exists, drop it

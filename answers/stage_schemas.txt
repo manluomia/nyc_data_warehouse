@@ -1,0 +1,316 @@
+
+SHOW staging.stage_bike_data;
+┌────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│    column_name     │ column_type │  null   │   key   │ default │ extra │
+│      varchar       │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ tripduration       │ FLOAT       │ YES     │         │         │       │
+│ start_time         │ TIMESTAMP   │ YES     │         │         │       │
+│ stop_time          │ TIMESTAMP   │ YES     │         │         │       │
+│ start_station_id   │ VARCHAR     │ YES     │         │         │       │
+│ start_station_name │ VARCHAR     │ YES     │         │         │       │
+│ start_station_lat  │ FLOAT       │ YES     │         │         │       │
+│ start_station_lng  │ FLOAT       │ YES     │         │         │       │
+│ end_station_id     │ VARCHAR     │ YES     │         │         │       │
+│ end_station_name   │ VARCHAR     │ YES     │         │         │       │
+│ end_station_lat    │ FLOAT       │ YES     │         │         │       │
+│ end_station_lng    │ FLOAT       │ YES     │         │         │       │
+│ filename           │ VARCHAR     │ YES     │         │         │       │
+├────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
+│ 12 rows                                                      6 columns │
+└────────────────────────────────────────────────────────────────────────┘
+
+DESCRIBE staging.stage_bike_data;
+┌────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│    column_name     │ column_type │  null   │   key   │ default │ extra │
+│      varchar       │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ tripduration       │ FLOAT       │ YES     │         │         │       │
+│ start_time         │ TIMESTAMP   │ YES     │         │         │       │
+│ stop_time          │ TIMESTAMP   │ YES     │         │         │       │
+│ start_station_id   │ VARCHAR     │ YES     │         │         │       │
+│ start_station_name │ VARCHAR     │ YES     │         │         │       │
+│ start_station_lat  │ FLOAT       │ YES     │         │         │       │
+│ start_station_lng  │ FLOAT       │ YES     │         │         │       │
+│ end_station_id     │ VARCHAR     │ YES     │         │         │       │
+│ end_station_name   │ VARCHAR     │ YES     │         │         │       │
+│ end_station_lat    │ FLOAT       │ YES     │         │         │       │
+│ end_station_lng    │ FLOAT       │ YES     │         │         │       │
+│ filename           │ VARCHAR     │ YES     │         │         │       │
+├────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
+│ 12 rows                                                      6 columns │
+└────────────────────────────────────────────────────────────────────────┘
+
+
+SHOW staging.stage_central_park_weather;
+┌────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│    column_name     │ column_type │  null   │   key   │ default │ extra │
+│      varchar       │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ station_code       │ VARCHAR     │ YES     │         │         │       │
+│ station_name       │ VARCHAR     │ YES     │         │         │       │
+│ date               │ DATE        │ YES     │         │         │       │
+│ average_wind_speed │ FLOAT       │ YES     │         │         │       │
+│ precipation        │ FLOAT       │ YES     │         │         │       │
+│ snowfall           │ FLOAT       │ YES     │         │         │       │
+│ snow_depth         │ FLOAT       │ YES     │         │         │       │
+│ max_temp           │ FLOAT       │ YES     │         │         │       │
+│ min_temp           │ FLOAT       │ YES     │         │         │       │
+│ filename           │ VARCHAR     │ YES     │         │         │       │
+├────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
+│ 10 rows                                                      6 columns │
+└────────────────────────────────────────────────────────────────────────┘
+
+DESCRIBE staging.stage_central_park_weather;
+┌────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│    column_name     │ column_type │  null   │   key   │ default │ extra │
+│      varchar       │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ station_code       │ VARCHAR     │ YES     │         │         │       │
+│ station_name       │ VARCHAR     │ YES     │         │         │       │
+│ date               │ DATE        │ YES     │         │         │       │
+│ average_wind_speed │ FLOAT       │ YES     │         │         │       │
+│ precipation        │ FLOAT       │ YES     │         │         │       │
+│ snowfall           │ FLOAT       │ YES     │         │         │       │
+│ snow_depth         │ FLOAT       │ YES     │         │         │       │
+│ max_temp           │ FLOAT       │ YES     │         │         │       │
+│ min_temp           │ FLOAT       │ YES     │         │         │       │
+│ filename           │ VARCHAR     │ YES     │         │         │       │
+├────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
+│ 10 rows                                                      6 columns │
+└────────────────────────────────────────────────────────────────────────┘
+
+SHOW staging.stage_fhv_bases;
+┌──────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│ column_name  │ column_type │  null   │   key   │ default │ extra │
+│   varchar    │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├──────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ base_number  │ VARCHAR     │ YES     │         │         │       │
+│ base_name    │ VARCHAR     │ YES     │         │         │       │
+│ dba_category │ VARCHAR     │ YES     │         │         │       │
+│ filename     │ VARCHAR     │ YES     │         │         │       │
+└──────────────┴─────────────┴─────────┴─────────┴─────────┴───────┘
+
+DESCRIBE staging.stage_fhv_bases;
+┌──────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│ column_name  │ column_type │  null   │   key   │ default │ extra │
+│   varchar    │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├──────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ base_number  │ VARCHAR     │ YES     │         │         │       │
+│ base_name    │ VARCHAR     │ YES     │         │         │       │
+│ dba_category │ VARCHAR     │ YES     │         │         │       │
+│ filename     │ VARCHAR     │ YES     │         │         │       │
+└──────────────┴─────────────┴─────────┴─────────┴─────────┴───────┘
+
+SHOW staging.stage_fhv_tripdata;
+┌────────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│      column_name       │ column_type │  null   │   key   │ default │ extra │
+│        varchar         │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├────────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ base_license_number    │ VARCHAR     │ YES     │         │         │       │
+│ pickup_time            │ TIMESTAMP   │ YES     │         │         │       │
+│ dropff_time            │ TIMESTAMP   │ YES     │         │         │       │
+│ begin_taxi_zone        │ DOUBLE      │ YES     │         │         │       │
+│ end_taxi_zone          │ DOUBLE      │ YES     │         │         │       │
+│ Affiliated_base_number │ VARCHAR     │ YES     │         │         │       │
+└────────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┘
+
+
+DESCRIBE staging.stage_fhv_tripdata;
+┌────────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│      column_name       │ column_type │  null   │   key   │ default │ extra │
+│        varchar         │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├────────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ base_license_number    │ VARCHAR     │ YES     │         │         │       │
+│ pickup_time            │ TIMESTAMP   │ YES     │         │         │       │
+│ dropff_time            │ TIMESTAMP   │ YES     │         │         │       │
+│ begin_taxi_zone        │ DOUBLE      │ YES     │         │         │       │
+│ end_taxi_zone          │ DOUBLE      │ YES     │         │         │       │
+│ Affiliated_base_number │ VARCHAR     │ YES     │         │         │       │
+└────────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┘
+
+
+SHOW staging.stage_fhvhv_tripdata;
+┌───────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│      column_name      │ column_type │  null   │   key   │ default │ extra │
+│        varchar        │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├───────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ hvfhs_license_num     │ VARCHAR     │ YES     │         │         │       │
+│ dispatching_base_num  │ VARCHAR     │ YES     │         │         │       │
+│ originating_base_num  │ VARCHAR     │ YES     │         │         │       │
+│ request_datetime      │ TIMESTAMP   │ YES     │         │         │       │
+│ on_scene_datetime     │ TIMESTAMP   │ YES     │         │         │       │
+│ pickup_datetime       │ TIMESTAMP   │ YES     │         │         │       │
+│ dropoff_datetime      │ TIMESTAMP   │ YES     │         │         │       │
+│ begin_taxi_zone       │ BIGINT      │ YES     │         │         │       │
+│ end_taxi_zone         │ BIGINT      │ YES     │         │         │       │
+│ trip_miles            │ DOUBLE      │ YES     │         │         │       │
+│ trip_time             │ BIGINT      │ YES     │         │         │       │
+│ base_passenger_fare   │ DOUBLE      │ YES     │         │         │       │
+│ tolls                 │ DOUBLE      │ YES     │         │         │       │
+│ black_car_fund_amount │ DOUBLE      │ YES     │         │         │       │
+│ sales_tax             │ DOUBLE      │ YES     │         │         │       │
+│ congestion_surcharge  │ DOUBLE      │ YES     │         │         │       │
+│ airport_fee           │ DOUBLE      │ YES     │         │         │       │
+│ tips                  │ DOUBLE      │ YES     │         │         │       │
+│ driver_pay            │ DOUBLE      │ YES     │         │         │       │
+│ aggred_to_share       │ BOOLEAN     │ YES     │         │         │       │
+│ shared_ride           │ BOOLEAN     │ YES     │         │         │       │
+│ trip_by_MTA           │ BOOLEAN     │ YES     │         │         │       │
+│ wheelchair_request    │ BOOLEAN     │ YES     │         │         │       │
+│ wheelchair_trip       │ BOOLEAN     │ YES     │         │         │       │
+│ filename              │ VARCHAR     │ YES     │         │         │       │
+├───────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
+│ 25 rows                                                         6 columns │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+DESCRIBE staging.stage_fhvhv_tripdata;
+┌───────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│      column_name      │ column_type │  null   │   key   │ default │ extra │
+│        varchar        │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├───────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ hvfhs_license_num     │ VARCHAR     │ YES     │         │         │       │
+│ dispatching_base_num  │ VARCHAR     │ YES     │         │         │       │
+│ originating_base_num  │ VARCHAR     │ YES     │         │         │       │
+│ request_datetime      │ TIMESTAMP   │ YES     │         │         │       │
+│ on_scene_datetime     │ TIMESTAMP   │ YES     │         │         │       │
+│ pickup_datetime       │ TIMESTAMP   │ YES     │         │         │       │
+│ dropoff_datetime      │ TIMESTAMP   │ YES     │         │         │       │
+│ begin_taxi_zone       │ BIGINT      │ YES     │         │         │       │
+│ end_taxi_zone         │ BIGINT      │ YES     │         │         │       │
+│ trip_miles            │ DOUBLE      │ YES     │         │         │       │
+│ trip_time             │ BIGINT      │ YES     │         │         │       │
+│ base_passenger_fare   │ DOUBLE      │ YES     │         │         │       │
+│ tolls                 │ DOUBLE      │ YES     │         │         │       │
+│ black_car_fund_amount │ DOUBLE      │ YES     │         │         │       │
+│ sales_tax             │ DOUBLE      │ YES     │         │         │       │
+│ congestion_surcharge  │ DOUBLE      │ YES     │         │         │       │
+│ airport_fee           │ DOUBLE      │ YES     │         │         │       │
+│ tips                  │ DOUBLE      │ YES     │         │         │       │
+│ driver_pay            │ DOUBLE      │ YES     │         │         │       │
+│ aggred_to_share       │ BOOLEAN     │ YES     │         │         │       │
+│ shared_ride           │ BOOLEAN     │ YES     │         │         │       │
+│ trip_by_MTA           │ BOOLEAN     │ YES     │         │         │       │
+│ wheelchair_request    │ BOOLEAN     │ YES     │         │         │       │
+│ wheelchair_trip       │ BOOLEAN     │ YES     │         │         │       │
+│ filename              │ VARCHAR     │ YES     │         │         │       │
+├───────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
+│ 25 rows                                                         6 columns │
+└───────────────────────────────────────────────────────────────────────────┘
+
+SHOW staging.stage_green_tripdata;
+┌───────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│      column_name      │ column_type │  null   │   key   │ default │ extra │
+│        varchar        │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├───────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ VendorID              │ BIGINT      │ YES     │         │         │       │
+│ pickup_datetime       │ TIMESTAMP   │ YES     │         │         │       │
+│ dropoff_datetime      │ TIMESTAMP   │ YES     │         │         │       │
+│ store_and_fwd_flag    │ BOOLEAN     │ YES     │         │         │       │
+│ find_rate_code        │ DOUBLE      │ YES     │         │         │       │
+│ begin_taxi_zone       │ BIGINT      │ YES     │         │         │       │
+│ end_taxi_zone         │ BIGINT      │ YES     │         │         │       │
+│ passenger_count       │ DOUBLE      │ YES     │         │         │       │
+│ trip_distance         │ DOUBLE      │ YES     │         │         │       │
+│ fare_amount           │ DOUBLE      │ YES     │         │         │       │
+│ extra_surcharge       │ DOUBLE      │ YES     │         │         │       │
+│ mta_tax               │ DOUBLE      │ YES     │         │         │       │
+│ tip_amount            │ DOUBLE      │ YES     │         │         │       │
+│ tolls_amount          │ DOUBLE      │ YES     │         │         │       │
+│ improvement_surcharge │ DOUBLE      │ YES     │         │         │       │
+│ total_amount          │ DOUBLE      │ YES     │         │         │       │
+│ payment_type          │ DOUBLE      │ YES     │         │         │       │
+│ trip_type             │ DOUBLE      │ YES     │         │         │       │
+│ congestion_surcharge  │ DOUBLE      │ YES     │         │         │       │
+│ filename              │ VARCHAR     │ YES     │         │         │       │
+├───────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
+│ 20 rows                                                         6 columns │
+└───────────────────────────────────────────────────────────────────────────┘
+
+DESCRIBE staging.stage_green_tripdata;
+┌───────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│      column_name      │ column_type │  null   │   key   │ default │ extra │
+│        varchar        │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├───────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ VendorID              │ BIGINT      │ YES     │         │         │       │
+│ pickup_datetime       │ TIMESTAMP   │ YES     │         │         │       │
+│ dropoff_datetime      │ TIMESTAMP   │ YES     │         │         │       │
+│ store_and_fwd_flag    │ BOOLEAN     │ YES     │         │         │       │
+│ find_rate_code        │ DOUBLE      │ YES     │         │         │       │
+│ begin_taxi_zone       │ BIGINT      │ YES     │         │         │       │
+│ end_taxi_zone         │ BIGINT      │ YES     │         │         │       │
+│ passenger_count       │ DOUBLE      │ YES     │         │         │       │
+│ trip_distance         │ DOUBLE      │ YES     │         │         │       │
+│ fare_amount           │ DOUBLE      │ YES     │         │         │       │
+│ extra_surcharge       │ DOUBLE      │ YES     │         │         │       │
+│ mta_tax               │ DOUBLE      │ YES     │         │         │       │
+│ tip_amount            │ DOUBLE      │ YES     │         │         │       │
+│ tolls_amount          │ DOUBLE      │ YES     │         │         │       │
+│ improvement_surcharge │ DOUBLE      │ YES     │         │         │       │
+│ total_amount          │ DOUBLE      │ YES     │         │         │       │
+│ payment_type          │ DOUBLE      │ YES     │         │         │       │
+│ trip_type             │ DOUBLE      │ YES     │         │         │       │
+│ congestion_surcharge  │ DOUBLE      │ YES     │         │         │       │
+│ filename              │ VARCHAR     │ YES     │         │         │       │
+├───────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
+│ 20 rows                                                         6 columns │
+└───────────────────────────────────────────────────────────────────────────┘
+
+SHOW staging.stage_yellow_tripdata;
+┌───────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│      column_name      │ column_type │  null   │   key   │ default │ extra │
+│        varchar        │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├───────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ VendorID              │ BIGINT      │ YES     │         │         │       │
+│ pickup_datetime       │ TIMESTAMP   │ YES     │         │         │       │
+│ dropoff_datetime      │ TIMESTAMP   │ YES     │         │         │       │
+│ passenger_count       │ DOUBLE      │ YES     │         │         │       │
+│ trip_distance         │ DOUBLE      │ YES     │         │         │       │
+│ find_rate_code        │ DOUBLE      │ YES     │         │         │       │
+│ store_and_fwd_flag    │ BOOLEAN     │ YES     │         │         │       │
+│ begin_taxi_zone       │ BIGINT      │ YES     │         │         │       │
+│ end_taxi_zone         │ BIGINT      │ YES     │         │         │       │
+│ payment_type          │ BIGINT      │ YES     │         │         │       │
+│ fare_amount           │ DOUBLE      │ YES     │         │         │       │
+│ extra_surcharge       │ DOUBLE      │ YES     │         │         │       │
+│ mta_tax               │ DOUBLE      │ YES     │         │         │       │
+│ tip_amount            │ DOUBLE      │ YES     │         │         │       │
+│ tolls_amount          │ DOUBLE      │ YES     │         │         │       │
+│ improvement_surcharge │ DOUBLE      │ YES     │         │         │       │
+│ total_amount          │ DOUBLE      │ YES     │         │         │       │
+│ congestion_surcharge  │ DOUBLE      │ YES     │         │         │       │
+│ airport_fee           │ DOUBLE      │ YES     │         │         │       │
+│ filename              │ VARCHAR     │ YES     │         │         │       │
+├───────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
+│ 20 rows                                                         6 columns │
+└───────────────────────────────────────────────────────────────────────────┘
+
+DESCRIBE staging.stage_yellow_tripdata;
+┌───────────────────────┬─────────────┬─────────┬─────────┬─────────┬───────┐
+│      column_name      │ column_type │  null   │   key   │ default │ extra │
+│        varchar        │   varchar   │ varchar │ varchar │ varchar │ int32 │
+├───────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
+│ VendorID              │ BIGINT      │ YES     │         │         │       │
+│ pickup_datetime       │ TIMESTAMP   │ YES     │         │         │       │
+│ dropoff_datetime      │ TIMESTAMP   │ YES     │         │         │       │
+│ passenger_count       │ DOUBLE      │ YES     │         │         │       │
+│ trip_distance         │ DOUBLE      │ YES     │         │         │       │
+│ find_rate_code        │ DOUBLE      │ YES     │         │         │       │
+│ store_and_fwd_flag    │ BOOLEAN     │ YES     │         │         │       │
+│ begin_taxi_zone       │ BIGINT      │ YES     │         │         │       │
+│ end_taxi_zone         │ BIGINT      │ YES     │         │         │       │
+│ payment_type          │ BIGINT      │ YES     │         │         │       │
+│ fare_amount           │ DOUBLE      │ YES     │         │         │       │
+│ extra_surcharge       │ DOUBLE      │ YES     │         │         │       │
+│ mta_tax               │ DOUBLE      │ YES     │         │         │       │
+│ tip_amount            │ DOUBLE      │ YES     │         │         │       │
+│ tolls_amount          │ DOUBLE      │ YES     │         │         │       │
+│ improvement_surcharge │ DOUBLE      │ YES     │         │         │       │
+│ total_amount          │ DOUBLE      │ YES     │         │         │       │
+│ congestion_surcharge  │ DOUBLE      │ YES     │         │         │       │
+│ airport_fee           │ DOUBLE      │ YES     │         │         │       │
+│ filename              │ VARCHAR     │ YES     │         │         │       │
+├───────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
+│ 20 rows                                                         6 columns │
+└───────────────────────────────────────────────────────────────────────────┘
