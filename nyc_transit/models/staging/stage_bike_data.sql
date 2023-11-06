@@ -28,6 +28,13 @@ first_part_raw as (
         "end station name"::varchar as end_station_name,
         "end station latitude"::float as end_station_lat,
         "end station longitude"::float as end_station_lng,
+        case when "gender" = '1' then 'male'
+            when "gender" = '2' then 'female'
+            else null
+        end as gender,
+        "birth year":: INTEGER as birth_year,
+        bikeid::INTEGER as bikeid,
+        usertype,
         filename
     from source
     where tripduration is not null
@@ -45,6 +52,10 @@ first_part as (
         trim(end_station_name) as end_station_name,
         end_station_lat,
         end_station_lng,
+        gender,
+        birth_year,
+        bikeid,
+        trim(usertype) as usertype,
         filename
     from first_part_raw
     where tripduration > 0 and start_time > '2000-01-01' and stop_time <= '2022-12-31'
@@ -63,6 +74,10 @@ second_part_raw as (
         end_station_name::varchar as end_station_name,
         end_lat::float as end_station_lat,
         end_lng::float as end_station_lng,
+        NULL as gender,
+        NULL as birth_year,
+        NULL as bikeid,
+        NULL as usertype,
         filename::varchar as filename
     from source
     where tripduration is null
@@ -80,6 +95,10 @@ second_part as (
         trim(end_station_name) as end_station_name,
         end_station_lat,
         end_station_lng,
+        gender,
+        birth_year,
+        bikeid,
+        usertype,
         filename
     from second_part_raw
     where (stop_time - start_time) > 0 and start_time > '2000-01-01' and stop_time <= '2022-12-31'

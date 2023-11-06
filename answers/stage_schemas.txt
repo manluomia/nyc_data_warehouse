@@ -15,9 +15,13 @@ SHOW staging.stage_bike_data;
 │ end_station_name   │ VARCHAR     │ YES     │         │         │       │
 │ end_station_lat    │ FLOAT       │ YES     │         │         │       │
 │ end_station_lng    │ FLOAT       │ YES     │         │         │       │
+│ gender             │ VARCHAR     │ YES     │         │         │       │
+│ birth_year         │ INTEGER     │ YES     │         │         │       │
+│ bikeid             │ INTEGER     │ YES     │         │         │       │
+│ usertype           │ VARCHAR     │ YES     │         │         │       │
 │ filename           │ VARCHAR     │ YES     │         │         │       │
 ├────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
-│ 12 rows                                                      6 columns │
+│ 16 rows                                                      6 columns │
 └────────────────────────────────────────────────────────────────────────┘
 
 DESCRIBE staging.stage_bike_data;
@@ -36,9 +40,13 @@ DESCRIBE staging.stage_bike_data;
 │ end_station_name   │ VARCHAR     │ YES     │         │         │       │
 │ end_station_lat    │ FLOAT       │ YES     │         │         │       │
 │ end_station_lng    │ FLOAT       │ YES     │         │         │       │
+│ gender             │ VARCHAR     │ YES     │         │         │       │
+│ birth_year         │ INTEGER     │ YES     │         │         │       │
+│ bikeid             │ INTEGER     │ YES     │         │         │       │
+│ usertype           │ VARCHAR     │ YES     │         │         │       │
 │ filename           │ VARCHAR     │ YES     │         │         │       │
 ├────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
-│ 12 rows                                                      6 columns │
+│ 16 rows                                                      6 columns │
 └────────────────────────────────────────────────────────────────────────┘
 
 
@@ -113,6 +121,7 @@ SHOW staging.stage_fhv_tripdata;
 │ begin_taxi_zone        │ DOUBLE      │ YES     │         │         │       │
 │ end_taxi_zone          │ DOUBLE      │ YES     │         │         │       │
 │ Affiliated_base_number │ VARCHAR     │ YES     │         │         │       │
+│ filename               │ VARCHAR     │ YES     │         │         │       │
 └────────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┘
 
 
@@ -127,6 +136,7 @@ DESCRIBE staging.stage_fhv_tripdata;
 │ begin_taxi_zone        │ DOUBLE      │ YES     │         │         │       │
 │ end_taxi_zone          │ DOUBLE      │ YES     │         │         │       │
 │ Affiliated_base_number │ VARCHAR     │ YES     │         │         │       │
+│ filename               │ VARCHAR     │ YES     │         │         │       │
 └────────────────────────┴─────────────┴─────────┴─────────┴─────────┴───────┘
 
 

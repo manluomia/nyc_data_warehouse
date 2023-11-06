@@ -13,7 +13,8 @@ stage_fhv_tripdata as (
         dropOff_datetime as dropff_time,
         PUlocationID as begin_taxi_zone,
         DOlocationID as end_taxi_zone,
-        Affiliated_base_number
+        Affiliated_base_number,
+        filename
     from source 
 )
 
