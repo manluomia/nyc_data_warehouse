@@ -8,12 +8,12 @@ with source as (
 --- SR_Flag  has too many missing values
 stage_fhv_tripdata as (
     select 
-        dispatching_base_num as base_license_number,
+        trim(upper(dispatching_base_num)) as base_license_number,
         pickup_datetime as pickup_time,
         dropOff_datetime as dropff_time,
         PUlocationID as begin_taxi_zone,
         DOlocationID as end_taxi_zone,
-        Affiliated_base_number,
+        trim(upper(affiliated_base_number)) as affiliated_base_number,
         filename
     from source 
 )

@@ -11,11 +11,7 @@ stage_green_tripdata as (
         VendorID,
         lpep_pickup_datetime as pickup_datetime,
         lpep_dropoff_datetime as dropoff_datetime,
-        CASE
-            WHEN upper(store_and_fwd_flag) = 'Y' THEN TRUE
-            WHEN upper(store_and_fwd_flag) = 'N' THEN FALSE
-            ELSE NULL 
-        END AS store_and_fwd_flag,
+        {{flag_to_bool("store_and_fwd_flag")}} as store_and_fwd_flag, 
         RatecodeID as find_rate_code,
         PULocationID as begin_taxi_zone,
         DOLocationID as end_taxi_zone,

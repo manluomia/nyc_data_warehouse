@@ -8,8 +8,9 @@ with source as (
 --- dba has too many missing values
 stage_fhv_bases as (
     select 
-        trim(base_number) as base_number,
+        trim(upper(base_number)) as base_number,
         trim(base_name) as base_name,
+        dba,
         trim(dba_category) as dba_category,
         filename
     from source 

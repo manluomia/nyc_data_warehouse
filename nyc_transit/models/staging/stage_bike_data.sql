@@ -12,102 +12,59 @@
 
 
 with source as (
+
     select * from {{ source('main', 'bike_data') }}
+
 ),
 
-first_part_raw as (
-    select 
-        tripduration :: float as tripduration,
-        "starttime"::timestamp as start_time,
-        "stoptime"::timestamp as stop_time,
-        "start station id"::varchar as start_station_id,
-        "start station name"::varchar as start_station_name,
-        "start station latitude"::float as start_station_lat,
-        "start station longitude"::float as start_station_lng,
-        "end station id"::varchar as end_station_id,
-        "end station name"::varchar as end_station_name,
-        "end station latitude"::float as end_station_lat,
-        "end station longitude"::float as end_station_lng,
-        case when "gender" = '1' then 'male'
-            when "gender" = '2' then 'female'
-            else null
-        end as gender,
-        "birth year":: INTEGER as birth_year,
-        bikeid::INTEGER as bikeid,
-        usertype,
-        filename
-    from source
-    where tripduration is not null
-),
-first_part as (
-    select 
+renamed as (
+
+    select
         tripduration,
-        start_time,
-        stop_time,
-        trim(start_station_id) as start_station_id,
-        trim(start_station_name) as start_station_name,
-        start_station_lat,
-        start_station_lng,
-        trim(end_station_id) as end_station_id,
-        trim(end_station_name) as end_station_name,
-        end_station_lat,
-        end_station_lng,
-        gender,
-        birth_year,
-        bikeid,
-        trim(usertype) as usertype,
-        filename
-    from first_part_raw
-    where tripduration > 0 and start_time > '2000-01-01' and stop_time <= '2022-12-31'
-
-),
---- Some of the end_station_id is string type so all the ids are casted to string
-second_part_raw as (
-    select
-        started_at::timestamp as start_time,
-        ended_at::timestamp as stop_time,
-        start_station_id::varchar as start_station_id,
-        start_station_name::varchar as start_station_name,
-        start_lat::float as start_station_lat,
-        start_lng::float as start_station_lng,   
-        end_station_id::varchar as end_station_id,
-        end_station_name::varchar as end_station_name,
-        end_lat::float as end_station_lat,
-        end_lng::float as end_station_lng,
-        NULL as gender,
-        NULL as birth_year,
-        NULL as bikeid,
-        NULL as usertype,
-        filename::varchar as filename
-    from source
-    where tripduration is null
-),
-second_part as (
-    select
-        (stop_time - start_time) :: float as tripduration,
-        start_time,
-        stop_time,
-        trim(start_station_id) as start_station_id,
-        trim(start_station_name) as start_station_name,
-        start_station_lat,
-        start_station_lng,
-        trim(end_station_id) as end_station_id,
-        trim(end_station_name) as end_station_name,
-        end_station_lat,
-        end_station_lng,
-        gender,
-        birth_year,
+        starttime,
+        stoptime,
+        "start station id",
+        "start station name",
+        "start station latitude",
+        "start station longitude",
+        "end station id",
+        "end station name",
+        "end station latitude",
+        "end station longitude",
         bikeid,
         usertype,
+        "birth year",
+        gender,
+        ride_id,
+        rideable_type,
+        started_at,
+        ended_at,
+        start_station_name,
+        start_station_id,
+        end_station_name,
+        end_station_id,
+        start_lat,
+        start_lng,
+        end_lat,
+        end_lng,
+        member_casual,
         filename
-    from second_part_raw
-    where (stop_time - start_time) > 0 and start_time > '2000-01-01' and stop_time <= '2022-12-31'
-),
 
-stage_bike_data as (
-    select * from first_part
-    union all 
-    select * from second_part
+    from source
+
 )
 
-select * from stage_bike_data
+select
+	coalesce(starttime, started_at)::timestamp as started_at_ts,
+	coalesce(stoptime, ended_at)::timestamp as ended_at_ts,
+	coalesce(tripduration::int,datediff('second', started_at_ts, ended_at_ts)) tripduration,
+	coalesce("start station id", start_station_id) as start_station_id,  
+	coalesce("start station name", start_station_name) as start_station_name,
+	coalesce("start station latitude", start_lat)::double as start_lat,
+	coalesce("start station longitude", start_lng)::double as start_lng, 
+	coalesce("end station id", end_station_id) as end_station_id,  
+	coalesce("end station name", end_station_name) as end_station_name,
+	coalesce("end station latitude", end_lat)::double as end_lat,
+	coalesce("end station longitude", end_lng)::double as end_lng,
+	filename
+from renamed
