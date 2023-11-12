@@ -6,21 +6,21 @@ SHOW bike_data;
 │       column_name       │ column_type │  null   │   key   │ default │ extra │
 │         varchar         │   varchar   │ varchar │ varchar │ varchar │ int32 │
 ├─────────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
-│ tripduration            │ BIGINT      │ YES     │         │         │       │
-│ starttime               │ TIMESTAMP   │ YES     │         │         │       │
-│ stoptime                │ TIMESTAMP   │ YES     │         │         │       │
-│ start station id        │ BIGINT      │ YES     │         │         │       │
+│ tripduration            │ VARCHAR     │ YES     │         │         │       │
+│ starttime               │ VARCHAR     │ YES     │         │         │       │
+│ stoptime                │ VARCHAR     │ YES     │         │         │       │
+│ start station id        │ VARCHAR     │ YES     │         │         │       │
 │ start station name      │ VARCHAR     │ YES     │         │         │       │
-│ start station latitude  │ DOUBLE      │ YES     │         │         │       │
-│ start station longitude │ DOUBLE      │ YES     │         │         │       │
-│ end station id          │ BIGINT      │ YES     │         │         │       │
+│ start station latitude  │ VARCHAR     │ YES     │         │         │       │
+│ start station longitude │ VARCHAR     │ YES     │         │         │       │
+│ end station id          │ VARCHAR     │ YES     │         │         │       │
 │ end station name        │ VARCHAR     │ YES     │         │         │       │
-│ end station latitude    │ DOUBLE      │ YES     │         │         │       │
-│ end station longitude   │ DOUBLE      │ YES     │         │         │       │
-│ bikeid                  │ BIGINT      │ YES     │         │         │       │
+│ end station latitude    │ VARCHAR     │ YES     │         │         │       │
+│ end station longitude   │ VARCHAR     │ YES     │         │         │       │
+│ bikeid                  │ VARCHAR     │ YES     │         │         │       │
 │ usertype                │ VARCHAR     │ YES     │         │         │       │
-│ birth year              │ BIGINT      │ YES     │         │         │       │
-│ gender                  │ BIGINT      │ YES     │         │         │       │
+│ birth year              │ VARCHAR     │ YES     │         │         │       │
+│ gender                  │ VARCHAR     │ YES     │         │         │       │
 │ ride_id                 │ VARCHAR     │ YES     │         │         │       │
 │ rideable_type           │ VARCHAR     │ YES     │         │         │       │
 │ started_at              │ VARCHAR     │ YES     │         │         │       │
@@ -45,21 +45,21 @@ DESCRIBE bike_data;
 │       column_name       │ column_type │  null   │   key   │ default │ extra │
 │         varchar         │   varchar   │ varchar │ varchar │ varchar │ int32 │
 ├─────────────────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
-│ tripduration            │ BIGINT      │ YES     │         │         │       │
-│ starttime               │ TIMESTAMP   │ YES     │         │         │       │
-│ stoptime                │ TIMESTAMP   │ YES     │         │         │       │
-│ start station id        │ BIGINT      │ YES     │         │         │       │
+│ tripduration            │ VARCHAR     │ YES     │         │         │       │
+│ starttime               │ VARCHAR     │ YES     │         │         │       │
+│ stoptime                │ VARCHAR     │ YES     │         │         │       │
+│ start station id        │ VARCHAR     │ YES     │         │         │       │
 │ start station name      │ VARCHAR     │ YES     │         │         │       │
-│ start station latitude  │ DOUBLE      │ YES     │         │         │       │
-│ start station longitude │ DOUBLE      │ YES     │         │         │       │
-│ end station id          │ BIGINT      │ YES     │         │         │       │
+│ start station latitude  │ VARCHAR     │ YES     │         │         │       │
+│ start station longitude │ VARCHAR     │ YES     │         │         │       │
+│ end station id          │ VARCHAR     │ YES     │         │         │       │
 │ end station name        │ VARCHAR     │ YES     │         │         │       │
-│ end station latitude    │ DOUBLE      │ YES     │         │         │       │
-│ end station longitude   │ DOUBLE      │ YES     │         │         │       │
-│ bikeid                  │ BIGINT      │ YES     │         │         │       │
+│ end station latitude    │ VARCHAR     │ YES     │         │         │       │
+│ end station longitude   │ VARCHAR     │ YES     │         │         │       │
+│ bikeid                  │ VARCHAR     │ YES     │         │         │       │
 │ usertype                │ VARCHAR     │ YES     │         │         │       │
-│ birth year              │ BIGINT      │ YES     │         │         │       │
-│ gender                  │ BIGINT      │ YES     │         │         │       │
+│ birth year              │ VARCHAR     │ YES     │         │         │       │
+│ gender                  │ VARCHAR     │ YES     │         │         │       │
 │ ride_id                 │ VARCHAR     │ YES     │         │         │       │
 │ rideable_type           │ VARCHAR     │ YES     │         │         │       │
 │ started_at              │ VARCHAR     │ YES     │         │         │       │
@@ -87,13 +87,13 @@ SHOW central_park_weather;
 ├─────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
 │ STATION     │ VARCHAR     │ YES     │         │         │       │
 │ NAME        │ VARCHAR     │ YES     │         │         │       │
-│ DATE        │ DATE        │ YES     │         │         │       │
-│ AWND        │ DOUBLE      │ YES     │         │         │       │
-│ PRCP        │ DOUBLE      │ YES     │         │         │       │
-│ SNOW        │ DOUBLE      │ YES     │         │         │       │
-│ SNWD        │ DOUBLE      │ YES     │         │         │       │
-│ TMAX        │ BIGINT      │ YES     │         │         │       │
-│ TMIN        │ BIGINT      │ YES     │         │         │       │
+│ DATE        │ VARCHAR     │ YES     │         │         │       │
+│ AWND        │ VARCHAR     │ YES     │         │         │       │
+│ PRCP        │ VARCHAR     │ YES     │         │         │       │
+│ SNOW        │ VARCHAR     │ YES     │         │         │       │
+│ SNWD        │ VARCHAR     │ YES     │         │         │       │
+│ TMAX        │ VARCHAR     │ YES     │         │         │       │
+│ TMIN        │ VARCHAR     │ YES     │         │         │       │
 │ filename    │ VARCHAR     │ YES     │         │         │       │
 ├─────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
 │ 10 rows                                               6 columns │
@@ -107,13 +107,13 @@ DESCRIBE central_park_weather;
 ├─────────────┼─────────────┼─────────┼─────────┼─────────┼───────┤
 │ STATION     │ VARCHAR     │ YES     │         │         │       │
 │ NAME        │ VARCHAR     │ YES     │         │         │       │
-│ DATE        │ DATE        │ YES     │         │         │       │
-│ AWND        │ DOUBLE      │ YES     │         │         │       │
-│ PRCP        │ DOUBLE      │ YES     │         │         │       │
-│ SNOW        │ DOUBLE      │ YES     │         │         │       │
-│ SNWD        │ DOUBLE      │ YES     │         │         │       │
-│ TMAX        │ BIGINT      │ YES     │         │         │       │
-│ TMIN        │ BIGINT      │ YES     │         │         │       │
+│ DATE        │ VARCHAR     │ YES     │         │         │       │
+│ AWND        │ VARCHAR     │ YES     │         │         │       │
+│ PRCP        │ VARCHAR     │ YES     │         │         │       │
+│ SNOW        │ VARCHAR     │ YES     │         │         │       │
+│ SNWD        │ VARCHAR     │ YES     │         │         │       │
+│ TMAX        │ VARCHAR     │ YES     │         │         │       │
+│ TMIN        │ VARCHAR     │ YES     │         │         │       │
 │ filename    │ VARCHAR     │ YES     │         │         │       │
 ├─────────────┴─────────────┴─────────┴─────────┴─────────┴───────┤
 │ 10 rows                                               6 columns │
