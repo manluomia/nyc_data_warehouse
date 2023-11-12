@@ -1,0 +1,462 @@
+models:
+  - name: staging.stage_bike_data
+    description: ""
+    columns:
+      - name: started_at_ts
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp
+
+      - name: ended_at_ts
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp
+                    
+      - name: tripduration
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  # (Optional)
+              max_value: 10000 # (Optional)
+                    
+      - name: start_station_id
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+                    
+      - name: start_station_name
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+                    
+      - name: start_lat
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: double
+                    
+      - name: start_lng
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: double
+                    
+      - name: end_station_id
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+                    
+      - name: end_station_name
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+
+      - name: end_lat
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: double
+                    
+      - name: end_lng
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: double
+                    
+      - name: filename
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+                    
+  - name: staging.stage_central_park_weather
+    description: ""
+    columns:
+      - name: station_code
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - not_null
+  
+      - name: station_name
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+
+      - name: date
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: 'date'
+
+      - name: average_wind_speed
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
+
+      - name: precipation
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
+
+      - name: snowfall
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
+
+      - name: snow_depth
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
+
+      - name: max_temp
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
+
+      - name: min_temp
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
+
+      - name: filename
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+
+  - name: staging.stage_fhv_bases
+    description: ""
+    columns:
+      - name: base_number
+        description: ""
+        tests:
+          - not_null
+          - unique           
+          - dbt_expectations.expect_column_to_exist
+      - name: base_name
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+      - name: dba
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+      - name: dba_category
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+      - name: filename
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - not_null
+      
+  - name: staging.stage_fhv_tripdata
+    description: ""
+    columns:
+      - name: base_license_number
+        description: ""
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_to_exist
+          - relationships:
+              to : source('staging','fhv_bases')
+              field: base_number
+
+      - name: pickup_time
+        description: ""
+
+      - name: dropff_time
+        description: ""
+
+      - name: begin_taxi_zone
+        description: ""
+
+      - name: end_taxi_zone
+        description: ""
+
+      - name: affiliated_base_number
+        description: ""
+
+      - name: filename
+        description: ""
+
+  - name: staging.stage_fhvhv_tripdata
+    description: ""
+    columns:
+      - name: hvfhs_license_num
+        description: ""
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_to_exist
+        
+      - name: dispatching_base_num
+        description: ""
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_to_exist
+          - relationships:
+              to : source('staging','fhv_bases')
+              field: base_number
+
+      - name: originating_base_num
+        description: ""
+
+      - name: request_datetime
+        description: ""
+
+      - name: on_scene_datetime
+        description: ""
+
+      - name: pickup_datetime
+        description: ""
+
+      - name: dropoff_datetime
+        description: ""
+
+      - name: begin_taxi_zone
+        description: ""
+
+      - name: end_taxi_zone
+        description: ""
+
+      - name: trip_miles
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+
+      - name: trip_time
+        description: ""
+
+      - name: base_passenger_fare
+        description: ""
+
+      - name: tolls
+        description: ""
+
+      - name: black_car_fund_amount
+        description: ""
+
+      - name: sales_tax
+        description: ""
+
+      - name: congestion_surcharge
+        description: ""
+
+      - name: airport_fee
+        description: ""
+
+      - name: tips
+        description: ""
+
+      - name: driver_pay
+        description: ""
+
+      - name: shared_request_flag
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bool
+
+      - name: shared_match_flag
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bool
+
+      - name: access_a_ride_flag
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bool
+
+      - name: wav_request_flag
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bool
+
+      - name: wav_match_flag
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bool
+
+      - name: filename
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bool
+
+  - name: staging.stage_green_tripdata
+    description: ""
+    columns:
+      - name: vendorid
+        description: ""
+
+      - name: pickup_datetime
+        description: ""
+
+      - name: dropoff_datetime
+        description: ""
+
+      - name: store_and_fwd_flag
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bool
+
+      - name: find_rate_code
+        description: ""
+
+      - name: begin_taxi_zone
+        description: ""
+
+      - name: end_taxi_zone
+        description: ""
+
+      - name: passenger_count
+        description: ""
+
+      - name: trip_distance
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  # (Optional)
+              max_value: 10000 # (Optional)
+
+      - name: fare_amount
+        description: ""
+
+      - name: extra_surcharge
+        description: ""
+
+      - name: mta_tax
+        description: ""
+
+      - name: tip_amount
+        description: ""
+
+      - name: tolls_amount
+        description: ""
+
+      - name: improvement_surcharge
+        description: ""
+
+      - name: total_amount
+        description: ""
+
+      - name: payment_type
+        description: ""
+
+      - name: trip_type
+        description: ""
+
+      - name: congestion_surcharge
+        description: ""
+
+      - name: filename
+        description: ""
+
+  - name: staging.stage_yellow_tripdata
+    description: ""
+    columns:
+      - name: vendorid
+        description: ""
+
+      - name: pickup_datetime
+        description: ""
+
+      - name: dropoff_datetime
+        description: ""
+
+      - name: passenger_count
+        description: ""
+
+      - name: trip_distance
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  # (Optional)
+              max_value: 10000 # (Optional)
+
+      - name: find_rate_code
+        description: ""
+
+      - name: store_and_fwd_flag
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bool
+
+      - name: begin_taxi_zone
+        description: ""
+
+      - name: end_taxi_zone
+        description: ""
+
+      - name: payment_type
+        description: ""
+
+      - name: fare_amount
+        description: ""
+
+      - name: extra_surcharge
+        description: ""
+
+      - name: mta_tax
+        description: ""
+
+      - name: tip_amount
+        description: ""
+
+      - name: tolls_amount
+        description: ""
+
+      - name: improvement_surcharge
+        description: ""
+
+      - name: total_amount
+        description: ""
+
+      - name: congestion_surcharge
+        description: ""
+
+      - name: airport_fee
+        description: ""
+
+      - name: filename
+        description: ""

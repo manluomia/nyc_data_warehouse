@@ -52,12 +52,21 @@ renamed as (
 
     from source
 
-)
+), 
+
+temp as (
 
 select
 	coalesce(starttime, started_at)::timestamp as started_at_ts,
 	coalesce(stoptime, ended_at)::timestamp as ended_at_ts,
-	coalesce(tripduration::int,datediff('second', started_at_ts, ended_at_ts)) tripduration,
+    case 
+        when tripduration is not null and tripduration ~ '^[0-9]+$' then
+            cast(tripduration as int)
+        when tripduration is not null and not tripduration ~ '^[0-9]+$' then
+            0
+        else
+            greatest(datediff('second', started_at_ts, ended_at_ts), 0)
+    end as tripduration,
 	coalesce("start station id", start_station_id) as start_station_id,  
 	coalesce("start station name", start_station_name) as start_station_name,
 	coalesce("start station latitude", start_lat)::double as start_lat,
@@ -68,3 +77,8 @@ select
 	coalesce("end station longitude", end_lng)::double as end_lng,
 	filename
 from renamed
+)
+
+select *
+from temp
+where tripduration between 0 and 10000
