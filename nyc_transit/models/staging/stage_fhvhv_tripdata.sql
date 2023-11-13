@@ -44,3 +44,4 @@ stage_fhvhv_tripdata as (
 )
 
 select * from stage_fhvhv_tripdata
+where (hvfhs_license_num is not null) and (originating_base_num is not null)

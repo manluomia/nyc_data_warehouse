@@ -19,7 +19,7 @@ stage_central_park_weather as (
         TMIN::float as min_temp,
         filename
     from source 
-    where date is not null
+    where (trim(STATION) is not null) and (DATE is not null)
 )
 
 select * from stage_central_park_weather

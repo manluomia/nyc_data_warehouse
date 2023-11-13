@@ -14,6 +14,8 @@ stage_fhv_bases as (
         trim(dba_category) as dba_category,
         filename
     from source 
+    where trim(upper(base_number)) is not null
 )
 
 select * from stage_fhv_bases
+where base_number is not null

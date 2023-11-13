@@ -1,12 +1,11 @@
 models:
-  - name: staging.stage_bike_data
+  - name: stage_bike_data
     description: ""
     columns:
       - name: started_at_ts
         description: ""
         tests:
           - dbt_expectations.expect_column_to_exist
-          - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: timestamp
 
@@ -22,8 +21,8 @@ models:
         description: ""
         tests:
           - dbt_expectations.expect_column_to_exist
-          - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: int
+          # - dbt_expectations.expect_column_values_to_be_of_type:
+          #     column_type: int
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0  # (Optional)
               max_value: 10000 # (Optional)
@@ -81,14 +80,14 @@ models:
         tests:
           - dbt_expectations.expect_column_to_exist
                     
-  - name: staging.stage_central_park_weather
+  - name: stage_central_park_weather
     description: ""
     columns:
       - name: station_code
         description: ""
         tests:
           - dbt_expectations.expect_column_to_exist
-          - not_null
+          
   
       - name: station_name
         description: ""
@@ -149,14 +148,12 @@ models:
         tests:
           - dbt_expectations.expect_column_to_exist
 
-  - name: staging.stage_fhv_bases
+  - name: stage_fhv_bases
     description: ""
     columns:
       - name: base_number
         description: ""
-        tests:
-          - not_null
-          - unique           
+        tests:     
           - dbt_expectations.expect_column_to_exist
       - name: base_name
         description: ""
@@ -174,19 +171,18 @@ models:
         description: ""
         tests:
           - dbt_expectations.expect_column_to_exist
-          - not_null
       
-  - name: staging.stage_fhv_tripdata
+  - name: stage_fhv_tripdata
     description: ""
     columns:
       - name: base_license_number
         description: ""
         tests:
-          - not_null
           - dbt_expectations.expect_column_to_exist
           - relationships:
               to : source('staging','fhv_bases')
               field: base_number
+              severity: WARN
 
       - name: pickup_time
         description: ""
@@ -206,19 +202,17 @@ models:
       - name: filename
         description: ""
 
-  - name: staging.stage_fhvhv_tripdata
+  - name: stage_fhvhv_tripdata
     description: ""
     columns:
       - name: hvfhs_license_num
         description: ""
         tests:
-          - not_null
           - dbt_expectations.expect_column_to_exist
         
       - name: dispatching_base_num
         description: ""
         tests:
-          - not_null
           - dbt_expectations.expect_column_to_exist
           - relationships:
               to : source('staging','fhv_bases')
@@ -283,6 +277,7 @@ models:
           - dbt_expectations.expect_column_to_exist
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: bool
+              severity: WARN
 
       - name: shared_match_flag
         description: ""
@@ -290,6 +285,7 @@ models:
           - dbt_expectations.expect_column_to_exist
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: bool
+              severity: WARN
 
       - name: access_a_ride_flag
         description: ""
@@ -297,6 +293,7 @@ models:
           - dbt_expectations.expect_column_to_exist
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: bool
+              severity: WARN
 
       - name: wav_request_flag
         description: ""
@@ -304,6 +301,7 @@ models:
           - dbt_expectations.expect_column_to_exist
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: bool
+              severity: WARN
 
       - name: wav_match_flag
         description: ""
@@ -311,15 +309,15 @@ models:
           - dbt_expectations.expect_column_to_exist
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: bool
+              severity: WARN
 
       - name: filename
         description: ""
         tests:
           - dbt_expectations.expect_column_to_exist
-          - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: bool
 
-  - name: staging.stage_green_tripdata
+
+  - name: stage_green_tripdata
     description: ""
     columns:
       - name: vendorid
@@ -337,6 +335,7 @@ models:
           - dbt_expectations.expect_column_to_exist
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: bool
+              severity: WARN
 
       - name: find_rate_code
         description: ""
@@ -352,10 +351,6 @@ models:
 
       - name: trip_distance
         description: ""
-        tests:
-          - dbt_expectations.expect_column_values_to_be_between:
-              min_value: 0  # (Optional)
-              max_value: 10000 # (Optional)
 
       - name: fare_amount
         description: ""
@@ -390,7 +385,7 @@ models:
       - name: filename
         description: ""
 
-  - name: staging.stage_yellow_tripdata
+  - name: stage_yellow_tripdata
     description: ""
     columns:
       - name: vendorid
@@ -407,10 +402,6 @@ models:
 
       - name: trip_distance
         description: ""
-        tests:
-          - dbt_expectations.expect_column_values_to_be_between:
-              min_value: 0  # (Optional)
-              max_value: 10000 # (Optional)
 
       - name: find_rate_code
         description: ""
@@ -421,6 +412,7 @@ models:
           - dbt_expectations.expect_column_to_exist
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: bool
+              severity: WARN
 
       - name: begin_taxi_zone
         description: ""

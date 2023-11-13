@@ -34,7 +34,8 @@ stage_yellow_tripdata as (
         filename,
     from source 
     where pickup_datetime <= '2022-12-31' and dropoff_datetime <= '2022-12-31' and passenger_count > 0
-    and trip_distance>0 and fare_amount>0 and total_amount>0
+    and trip_distance>=0 and fare_amount>0 and total_amount>0
 )
 
 select * from stage_yellow_tripdata
+where trip_distance between 0 and 10000
